@@ -17,7 +17,6 @@ using Cli.Business.IO;
 using Cli.General.IO;
 using Cli.General.Reflection;
 using Cli.General.Text;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 namespace Cli.Business.Module
 {
