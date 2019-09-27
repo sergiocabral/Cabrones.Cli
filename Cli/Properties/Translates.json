@@ -1,0 +1,218 @@
+[
+  {
+    "Key": "Yes",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Sim"
+      }
+    ]
+  },
+  {
+    "Key": "No",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Não"
+      }
+    ]
+  },
+  {
+    "Key": "Operations:",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Operações:"
+      }
+    ]
+  },
+  {
+    "Key": "Resources:",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Recursos:"
+      }
+    ]
+  },
+  {
+    "Key": "Under development.",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Em desenvolvimento."
+      }
+    ]
+  },
+  {
+    "Key": "Press any key to continue.",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Pressione qualquer tecla para continuar."
+      }
+    ]
+  },
+  {
+    "Key": "System component loaded: {0}",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Componente do sistema carregado: {0}"
+      }
+    ]
+  },
+  {
+    "Key": "There was an error loading the file \"{0}\".",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Ocorreu um erro ao carregar o arquivo \"{0}\"."
+      }
+    ]
+  },
+  {
+    "Key": "The contents of the file \"{0}\" are not valid.",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "O conteúdo do arquivo \"{0}\" não é válido."
+      }
+    ]
+  },
+  {
+    "Key": "There was an error writing file \"{0}\".",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Ocorreu um erro ao gravar o arquivo \"{0}\"."
+      }
+    ]
+  },
+  {
+    "Key": "There was an error deleting file \"{0}\".",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Ocorreu um erro ao apagar o arquivo \"{0}\"."
+      }
+    ]
+  },
+  {
+    "Key": "Choose or input blank to exit: ",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Escolha ou deixe em branco para sair: "
+      }
+    ]
+  },
+  {
+    "Key": "Choose multiple with _Regex_ or input blank to exit: ",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Escolha vários com _Regex_ ou deixe em branco para sair: "
+      }
+    ]
+  },
+  {
+    "Key": "Wrong choice, dude.",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Escolha errada, cara."
+      }
+    ]
+  },
+  {
+    "Key": "(blank)",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "(em branco)"
+      }
+    ]
+  },
+  {
+    "Key": "Confirmed",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Confirmado"
+      }
+    ]
+  },
+  {
+    "Key": "Canceled",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Cancelado"
+      }
+    ]
+  },
+  {
+    "Key": "Type \"{0}\" to confirm previous selection:",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Digite \"{0}\" para confirmar a seleção anterior:"
+      }
+    ]
+  },
+  {
+    "Key": "Available modules:",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Módulos disponíveis:"
+      }
+    ]
+  },
+  {
+    "Key": "Finished.",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Finalizado."
+      }
+    ]
+  },
+  {
+    "Key": "To pause use [P], to stop use [ESC].",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Para pausar use [P], para parar use [ESC]."
+      }
+    ]
+  },
+  {
+    "Key": "Execution canceled by user.",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Execução cancelada pelo usuário."
+      }
+    ]
+  },
+  {
+    "Key": "Execution paused by the user. Press any key to continue.",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Execução pausada pelo usuário. Pressione qualquer tecla para continuar."
+      }
+    ]
+  },
+  {
+    "Key": "Fail",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Falha"
+      }
+    ]
+  }
+]
