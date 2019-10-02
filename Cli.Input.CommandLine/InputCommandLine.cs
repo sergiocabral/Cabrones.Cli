@@ -34,8 +34,9 @@ namespace Cli.Input.CommandLine
         /// <summary>
         ///     Recebe uma entrada do usuário.
         /// </summary>
+        /// <param name="isSensitive">Indica se deve ser tratado como dado sensível.</param>
         /// <returns>Entrada do usuário</returns>
-        public override string Read()
+        public override string Read(bool isSensitive = false)
         {
             if (_lastAnswer != null) return string.Empty;
 

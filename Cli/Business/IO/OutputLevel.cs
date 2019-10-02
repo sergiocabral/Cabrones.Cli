@@ -17,6 +17,6 @@ namespace Cli.Business.IO
         /// Nível prioritário. Usado para quando for exibir apenas o retorno via linha de comando.
         /// Corresponde a Common e mais um bit.
         /// </summary>
-        CommandLine = 0b_11,
+        CommandLine = 0b_11
     }
 }

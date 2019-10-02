@@ -10,14 +10,15 @@ namespace Cli.Business.IO
         /// <summary>
         ///     Recebe uma entrada do usuário.
         /// </summary>
+        /// <param name="isSensitive">Indica se deve ser tratado como dado sensível.</param>
         /// <returns>Entrada do usuário</returns>
-        public string Read()
+        public string Read(bool isSensitive = false)
         {
             do
             {
                 foreach (var item in Items)
                     if (item.HasRead())
-                        return item.Read();
+                        return item.Read(isSensitive);
             } while (true);
         }
 

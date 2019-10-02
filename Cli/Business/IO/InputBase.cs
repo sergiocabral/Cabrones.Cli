@@ -35,8 +35,9 @@ namespace Cli.Business.IO
         /// <summary>
         ///     Recebe uma entrada do usuário.
         /// </summary>
+        /// <param name="isSensitive">Indica se deve ser tratado como dado sensível.</param>
         /// <returns>Entrada do usuário</returns>
-        public abstract string Read();
+        public abstract string Read(bool isSensitive = false);
 
         /// <summary>
         ///     Verifica se possui resposta prévia.

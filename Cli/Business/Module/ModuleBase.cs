@@ -435,15 +435,16 @@ namespace Cli.Business.Module
         ///     Recebe um texto do usuário.
         /// </summary>
         /// <param name="title">Título.</param>
-        public string InputText(string title)
-        {
+        /// <param name="isSensitive">Indica se deve ser tratado como dado sensível.</param>
+        public string InputText(string title, bool isSensitive = false)
+        {   
             Output.WriteLine($"?{title.Translate()}");
             Output.Write("?> ");
 
-            var answer = Input.Read();
+            var answer = Input.Read(isSensitive);
 
             Output.WriteLine(!string.IsNullOrWhiteSpace(answer)
-                ? $"@{answer.EscapeForOutput()}"
+                ? $"@{(!isSensitive ? answer.EscapeForOutput() : "***".EscapeForOutput())}"
                 : $"_{Phrases.ChooseBlank.Translate()}").WriteLine();
 
             return answer;
@@ -512,7 +513,7 @@ namespace Cli.Business.Module
                 if (control == null) continue;
 
                 // ReSharper disable once SwitchStatementMissingSomeCases
-                switch ((Output.LevelFilter == OutputLevel.Interactive) && Input.HasRead() ? Input.ReadKey() : (char) 0)
+                switch (Output.LevelFilter == OutputLevel.Interactive && Input.HasRead() ? Input.ReadKey() : (char) 0)
                 {
                     case (char) ConsoleKey.Escape:
                         ConsoleLoading.Active(false);
