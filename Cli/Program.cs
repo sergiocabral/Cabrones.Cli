@@ -75,9 +75,9 @@ namespace Cli
                 var environment = Environment.GetEnvironmentVariable("CLI-LANG") ?? Environment.GetEnvironmentVariable("CLI_LANG") ?? string.Empty;
 
                 environment =
-                    environment == KnowCommandTranslate ? "?" :
-                    Regex.IsMatch(environment, @"^pt\b", RegexOptions.IgnoreCase) ? "pt-BR" :
-                    CultureInfo.CurrentUICulture.Name;
+                    environment == KnowCommandTranslate ? string.Empty : //Ignora o idioma usado para nomear comandos.
+                    Regex.IsMatch(environment, @"^pt[^a-z]*", RegexOptions.IgnoreCase) ? "pt-BR" : //Facilita tentativas de usar o portugues
+                    CultureInfo.CurrentUICulture.Name; //Usa o idioma padrão do sistema operacional.
                 
                 return environment;
             }
