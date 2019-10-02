@@ -11,12 +11,12 @@ namespace Cli.Business.IO
         /// <summary>
         /// Comum a todas as mensagens.
         /// </summary>
-        Interactive = 1,
-        
+        Interactive = 0b_01,
+
         /// <summary>
         /// Nível prioritário. Usado para quando for exibir apenas o retorno via linha de comando.
         /// Corresponde a Common e mais um bit.
         /// </summary>
-        CommandLine = 3
+        CommandLine = 0b_11,
     }
 }

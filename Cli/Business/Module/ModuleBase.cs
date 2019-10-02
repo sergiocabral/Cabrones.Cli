@@ -504,7 +504,7 @@ namespace Cli.Business.Module
         /// <returns>Retorna true quando finaliza, e false quando o usuário cancela.</returns>
         protected bool Loop<T>(Func<T, T> loop, T control)
         {
-            if (Output.LevelFilter <= OutputLevel.Interactive) Output.WriteLine($"_{Phrases.LoopControl.Translate()}").WriteLine();
+            if (Output.LevelFilter == OutputLevel.Interactive) Output.WriteLine($"_{Phrases.LoopControl.Translate()}").WriteLine();
             do
             {
                 control = loop(control);
@@ -512,16 +512,16 @@ namespace Cli.Business.Module
                 if (control == null) continue;
 
                 // ReSharper disable once SwitchStatementMissingSomeCases
-                switch (Output.LevelFilter <= OutputLevel.Interactive && Input.HasRead() ? Input.ReadKey() : (char) 0)
+                switch ((Output.LevelFilter == OutputLevel.Interactive) && Input.HasRead() ? Input.ReadKey() : (char) 0)
                 {
                     case (char) ConsoleKey.Escape:
                         ConsoleLoading.Active(false);
-                        if (Output.LevelFilter <= OutputLevel.Interactive) Output.WriteLine().WriteLine($"_{Phrases.LoopCanceled.Translate()}");
+                        Output.WriteLine().WriteLine($"_{Phrases.LoopCanceled.Translate()}");
                         return false;
                     case 'p':
                     case 'P':
                         ConsoleLoading.Active(false);
-                        if (Output.LevelFilter <= OutputLevel.Interactive) Output.WriteLine().WriteLine($"_{Phrases.LoopPaused.Translate()}").WriteLine();
+                        Output.WriteLine().WriteLine($"_{Phrases.LoopPaused.Translate()}").WriteLine();
                         Input.ReadKey();
                         break;
                 }

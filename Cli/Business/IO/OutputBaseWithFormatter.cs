@@ -18,7 +18,7 @@
         /// <summary>
         ///     Determina se um texto pode ser escrito.
         /// </summary>
-        protected bool CanWrite => Level >= LevelFilter;
+        protected bool CanWrite => (Level & LevelFilter) == LevelFilter;
         
         /// <summary>
         ///     Escreve um texto formatado.
