@@ -1,4 +1,5 @@
-﻿namespace Cli.Business
+﻿// ReSharper disable UnusedMember.Global
+namespace Cli.Business
 {
     /// <summary>
     ///     Coleção de frases de uso comum.
