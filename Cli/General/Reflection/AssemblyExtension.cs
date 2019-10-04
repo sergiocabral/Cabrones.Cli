@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Cli.General.Reflection
 {
@@ -13,11 +14,13 @@ namespace Cli.General.Reflection
         ///     Retorna o nome descritivo para um assembly.
         /// </summary>
         /// <param name="assembly">Assembly.</param>
+        /// <param name="shortName">Quando true retorna a última parte do nome, sem o namespace.</param>
         /// <returns>Nome descritivo.</returns>
-        public static string GetDescription(this Assembly assembly)
+        public static string GetDescription(this Assembly assembly, bool shortName = false)
         {
             var name = assembly.GetName();
-            return $"{name.Name} v{name.Version.Major}.{name.Version.Minor}.{name.Version.Build}";
+            var nameText = !shortName ? name.Name : Regex.Replace(name.Name, @"^[\w\.]*\.", string.Empty);
+            return $"{nameText} v{name.Version.Major}.{name.Version.Minor}.{name.Version.Build}";
         }
 
         /// <summary>

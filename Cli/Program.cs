@@ -235,11 +235,9 @@ namespace Cli
         {
             var isRootModule = RootModules.Count == 1 && RootModules[0] is ModuleBase;
 
-            if (!isRootModule) return Assembly.GetExecutingAssembly().GetDescription();
-
-            var text = ((ModuleBase) RootModules[0]).ClassAssembly.GetDescription();
-            text = Regex.Replace(text, @"^[\w\.]*\.", string.Empty);
-            return text;
+            return !isRootModule ? 
+                Assembly.GetExecutingAssembly().GetDescription(true) : 
+                ((ModuleBase) RootModules[0]).ClassAssembly.GetDescription(true);
         }
 
         /// <summary>
