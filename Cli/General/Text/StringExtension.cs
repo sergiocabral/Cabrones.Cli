@@ -1,5 +1,8 @@
 ﻿// ReSharper disable UnusedMember.Global
 
+using System;
+using System.Collections.Specialized;
+using System.Text;
 using System.Text.RegularExpressions;
 using Cli.General.Text.Formatter;
 
@@ -41,8 +44,6 @@ namespace Cli.General.Text
             return Regex.IsMatch(text,
                 @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*@((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))\z");
         }
-<<<<<<< HEAD
-=======
 
         /// <summary>
         ///     Determina se é um inteiro.
@@ -98,6 +99,5 @@ namespace Cli.General.Text
 
             return result;
         }
->>>>>>> 400d898... Novo comando 'cli check bitbucket pullrequests'.
     }
 }
