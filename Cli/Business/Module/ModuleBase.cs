@@ -373,10 +373,22 @@ namespace Cli.Business.Module
                                 break;
                             }
 
-                            if (GetPossiblesToSelect(options[i]).Count(a =>
-                                    a.Slug().IndexOf(answerSlug, StringComparison.Ordinal) == 0) > 0)
+                            if (GetPossiblesToSelect(options[i]).Count(a => a.Slug().IndexOf(answerSlug, StringComparison.Ordinal) == 0) > 0)
                             {
+                                //Localiza por parte inicial do texto.
                                 index.Add(i);
+                            }
+                        }
+
+                        if (index.Count == 0)
+                        {
+                            for (var i = 0; i < options.Count; i++)
+                            {
+                                // Caso não encontre localiza por qualquer parte de texto.
+                                if (GetPossiblesToSelect(options[i]).Count(a => a.Slug().Contains(answerSlug, StringComparison.Ordinal)) > 0)
+                                {
+                                    index.Add(i);
+                                }
                             }
                         }
 
@@ -417,16 +429,21 @@ namespace Cli.Business.Module
         /// </summary>
         /// <param name="title">Título.</param>
         /// <param name="response">Resposta para confirmação.</param>
-        public bool InputConfirm(string title = Phrases.ConfirmSelection, string response = "Ok")
+        /// <param name="confirmed">Opcional. Texto para quando a resposta é confirmada.</param>
+        /// <param name="canceled">Opcional. Texto para quando a resposta é cancelada.</param>
+        public bool InputConfirm(string title = Phrases.ConfirmSelection, string response = "Ok", string confirmed = null, string canceled = null)
         {
             Output.WriteLine($"?{title.Translate()}", response);
             Output.Write("?> ");
 
             var answer =  string.Equals(Input.Read(), response, StringComparison.CurrentCultureIgnoreCase);
 
+            confirmed = string.IsNullOrWhiteSpace(confirmed) ? Phrases.Confirmed : confirmed;
+            canceled = string.IsNullOrWhiteSpace(canceled) ? Phrases.Canceled : canceled;
+
             Output.WriteLine(answer
-                ? $"@{Phrases.Confirmed.Translate()}"
-                : $"_{Phrases.Canceled.Translate()}").WriteLine();
+                ? $"@{confirmed.Translate()}"
+                : $"_{canceled.Translate()}").WriteLine();
 
             return answer;
         }

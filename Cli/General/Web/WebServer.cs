@@ -82,6 +82,7 @@ namespace Cli.General.Web
 
                                 var html = _response(httpListenerContext.Request);
                                 var htmlBytes = Encoding.GetBytes(html);
+                                httpListenerContext.Response.ContentType = "text/html; charset=" + Encoding.HeaderName;
                                 httpListenerContext.Response.ContentLength64 = htmlBytes.Length;
                                 httpListenerContext.Response.OutputStream.Write(htmlBytes, 0, htmlBytes.Length);
                             }

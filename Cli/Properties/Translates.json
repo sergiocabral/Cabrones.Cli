@@ -241,5 +241,14 @@
         "Value": "Falha"
       }
     ]
+  },
+  {
+    "Key": "OAuth has been processed. This window can now be closed.",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "OAuth foi processado. Esta janela agora pode ser fechada."
+      }
+    ]
   }
 ]

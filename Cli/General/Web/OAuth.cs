@@ -32,7 +32,7 @@ namespace Cli.General.Web
         /// <summary>
         /// Conteúdo na página HTML durante o processamento do OAuth.
         /// </summary>
-        public static string HtmlBody { get; set; } = "OAuth has been processed. This window can now be closed.";
+        public static string HtmlContent { get; set; } = $"<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>{HtmlTitle}</title></head><body>{"OAuth has been processed. This window can now be closed.".Translate()}</body></html>";
 
         /// <summary>
         /// Servidor web.
@@ -108,17 +108,32 @@ namespace Cli.General.Web
         }
 
         /// <summary>
+        /// Flag que indica que o OAuth ainda está sendo processado.
+        /// </summary>
+        private static bool _processing;
+
+        /// <summary>
         /// Processa a responsa do servidor web.
         /// </summary>
         /// <param name="request">Requisição http.</param>
         /// <returns>Retorna HTML.</returns>
         private static string Response(HttpListenerRequest request)
         {
+            if (_processing)
+            {
+                _processing = false;
+                return HtmlContent;
+            }
+
             var hasToken = request.Url.ToString().Contains("?");
-            var body = hasToken ? HtmlBody : "<script>location.href = location.href.replace('#', '?');</script>";
-            var html = $"<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>{HtmlTitle}</title></head><body>{body}</body></html>";
+            var html = hasToken ? 
+                HtmlContent + @"<script>!location.search || (location.href = location.href.replace(location.search, ''))</script>" : 
+                $"<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>{HtmlTitle}</title></head><body><script>location.href = location.href.replace('#', '?');</script></body></html>";
+
             if (!hasToken) return html;
-            
+
+            _processing = true;
+
             _response(request.Url.Query, Regex.Replace(request.Url.AbsolutePath, @"(^/|/$)", string.Empty));
             ThreadPool.QueueUserWorkItem(state =>
             {

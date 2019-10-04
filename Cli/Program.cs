@@ -68,7 +68,7 @@ namespace Cli
         /// <summary>
         ///     Idioma de execução.
         /// </summary>
-        private static string Language
+        public static string Language
         {
             get
             {
