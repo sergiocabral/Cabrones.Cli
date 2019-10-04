@@ -6,6 +6,21 @@
     public static class Phrases
     {
         /// <summary>
+        ///     dd/MM/yyyy
+        /// </summary>
+        public const string FormatDate = "MM/dd/yyyy";
+        
+        /// <summary>
+        ///     HH:mm
+        /// </summary>
+        public const string FormatTime = "hh:mm tt";
+        
+        /// <summary>
+        ///     dd/MM/yyyy HH:mm
+        /// </summary>
+        public const string FormatDateTime = "MM/dd/yyyy hh:mm tt";
+        
+        /// <summary>
         ///     Módulo carregado: {0}
         /// </summary>
         public const string FileLoadedAssembly = "System component loaded: {0}";

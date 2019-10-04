@@ -1,5 +1,32 @@
 [
   {
+    "Key": "MM/dd/yyyy hh:mm tt",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "dd/MM/yyyy HH:mm"
+      }
+    ]
+  },
+  {
+    "Key": "MM/dd/yyyy",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "dd/MM/yyyy"
+      }
+    ]
+  },
+  {
+    "Key": "hh:mm tt",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "HH:mm"
+      }
+    ]
+  },
+  {
     "Key": "Yes",
     "Value": [
       {
