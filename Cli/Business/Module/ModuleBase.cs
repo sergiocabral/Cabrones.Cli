@@ -476,7 +476,7 @@ namespace Cli.Business.Module
             var modules = AllModules
                 .Where(a => a.Context == context)
                 .OrderBy(a => a.ContextOrder)
-                .ThenBy(a => a.Name)
+                .ThenBy(a => a.Name.Translate())
                 .ToList();
 
             var isOneRootModule = context == string.Empty && modules.Count == 1;
