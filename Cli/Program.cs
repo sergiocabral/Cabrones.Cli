@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.Threading;
 using Cli.Business;
 using Cli.Business.IO;
 using Cli.Business.Module;
+using Cli.General.IO;
 using Cli.General.Reflection;
 using Cli.General.Text;
 
@@ -18,15 +21,40 @@ namespace Cli
     public sealed class Program : ModuleBase
     {
         /// <summary>
+        /// Fonte da informação da propriedade CommandLineArgs
+        /// </summary>
+        private static List<string> _commandLineArgs;
+
+        /// <summary>
+        /// Lista de argumentos por linha de comando ADAPTADA AO PROGRAMA.
+        /// Não incluir o parâmetro 0 que é o próprio executável.
+        /// Se o último parâmetro for InputBase.InputAnswerToExit remove, caso não, inclui. (o programa lida com isso de forma invertida)
+        /// </summary>
+        public static IEnumerable<string> CommandLineArgs {
+            get
+            {
+                if (_commandLineArgs != null) return _commandLineArgs;
+                _commandLineArgs = new List<string>(Environment.GetCommandLineArgs());
+                _commandLineArgs.RemoveAt(0);
+                var last = _commandLineArgs.LastOrDefault();
+                if (last == InputBase.InputAnswerToExit) _commandLineArgs.RemoveAt(_commandLineArgs.Count - 1);
+                else if (_commandLineArgs.Count > 0) _commandLineArgs.Add(InputBase.InputAnswerToExit);
+                return _commandLineArgs;
+            }
+        }
+
+        /// <summary>
         ///     Construtor.
         /// </summary>
         private Program()
         {
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Processes.WorkingDirectory = Temporary.ParentTemporaryDirectory = Definitions.DirectoryForUserData;
             SetInput(new InputManager());
             SetOutput(new OutputManager
             {
                 Prevent = true, 
-                LevelFilter = Environment.GetCommandLineArgs().Any(a => a == InputBase.InputAnswerToExit) ? 
+                LevelFilter = CommandLineArgs.Any(a => a == InputBase.InputAnswerToExit) ? 
                     OutputLevel.CommandLine : 
                     OutputLevel.Interactive
             });
@@ -35,6 +63,8 @@ namespace Cli
             ExtractAssemblies();
             LoadModules();
             Run();
+            if (!Output.HasWrite) HelpForCommandLine();
+            Thread.Sleep(1000);
         }
 
         /// <summary>
@@ -225,6 +255,19 @@ namespace Cli
             ChooseModule(string.Empty, "Available modules:");
             
             Output.WriteLine("_{0}", "Finished.".Translate());
+        }
+
+        /// <summary>
+        /// Exibe o texto de ajuda.
+        /// </summary>
+        private void HelpForCommandLine()
+        {
+            var executable = Regex.Replace(new FileInfo(Environment.GetCommandLineArgs()[0]).Name, @"\.[^\.]*$", string.Empty).ToLower();
+            var commandLine = string.Join(' ', CommandLineArgs);
+            Output.Level = OutputLevel.CommandLine;
+            Output.WriteLine("The arguments entered by command line had no results.".Translate());
+            Output.WriteLine("To see what happened try using: {0}".Translate(), $"*{executable.EscapeForOutput()} {commandLine.EscapeForOutput()}");
+            Output.WriteLine();
         }
 
         /// <summary>

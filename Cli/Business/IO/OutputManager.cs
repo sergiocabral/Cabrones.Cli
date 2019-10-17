@@ -1,4 +1,6 @@
-﻿using System;
+﻿// ReSharper disable MemberCanBePrivate.Global
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -149,10 +151,18 @@ namespace Cli.Business.IO
             else
             {
                 foreach (var item in Items) item.Write(textInfo.Text, textInfo.Args);
+                if (CanWrite && !HasWrite) HasWrite = true;
             }
 
             return this;
         }
+
+        public bool CanWrite => (Level & LevelFilter) == LevelFilter;
+
+        /// <summary>
+        /// Indica se houve alguma escrita na tela.
+        /// </summary>
+        public bool HasWrite { get; private set; }
 
         /// <summary>
         ///     Solicita a escrita dos itens da fila de mensagens não exibidas.

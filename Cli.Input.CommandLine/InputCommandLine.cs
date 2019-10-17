@@ -1,8 +1,8 @@
 ﻿// ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
 
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cli.Business.IO;
 
 namespace Cli.Input.CommandLine
@@ -16,20 +16,11 @@ namespace Cli.Input.CommandLine
         ///     Última resposta. Quando != null retorna texto vazio para forçar saída do programa.
         /// </summary>
         private string _lastAnswer;
-
-        /// <summary>
-        ///     Construtor.
-        /// </summary>
-        public InputCommandLine()
-        {
-            CommandLineArgs = new List<string>(Environment.GetCommandLineArgs());
-            CommandLineArgs.RemoveAt(0);
-        }
-
+        
         /// <summary>
         ///     Argumentos na fila.
         /// </summary>
-        public List<string> CommandLineArgs { get; }
+        public List<string> CommandLineArgs { get; } = Program.CommandLineArgs.ToList();
 
         /// <summary>
         ///     Recebe uma entrada do usuário.

@@ -250,5 +250,23 @@
         "Value": "OAuth foi processado. Esta janela agora pode ser fechada."
       }
     ]
+  },
+  {
+    "Key": "The arguments entered by command line had no results.",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Os argumentos informados por linha de comando não tiveram resultados."
+      }
+    ]
+  },
+  {
+    "Key": "To see what happened try using: {0}",
+    "Value": [
+      {
+        "Key": "pt-BR",
+        "Value": "Para ver o que aconteceu tente usar: {0}"
+      }
+    ]
   }
 ]
