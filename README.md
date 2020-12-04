@@ -16,3 +16,7 @@ O executável e as bibliotecas serão geradas na pastas `_build`.
 Obs.: A pasta vazia `_build\netcoreapp2.2` pode ser apagada. Ela só não foi porque não é possível apagar durante a publicação.
 
 O executável final é o arquivo `Cli.exe`.
+
+## Printscreen de uma aplicação usando esta biblioteca:
+
+![printscreen](https://i.imgur.com/YLu8yuo.png)
